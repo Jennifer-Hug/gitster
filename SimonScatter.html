@@ -1,0 +1,284 @@
+
+<!-- saved from url=(0065)file:///C:/Users/jennifer.hughes/Downloads/StandAloneScatter.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+		<script src="./SimonScatter_files/d3.v3.min.js"></script>
+		<script src="./SimonScatter_files/d3.tip.v0.6.3.js"></script>
+
+		<style>
+
+        		h1 {
+            color: #ffffff;
+            font-family:'Raleway';
+            font-weight: normal;
+            font-size: 1.75em;
+            letter-spacing: .2em;
+            line-height: 1.1em;
+            margin:0px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        #container {
+            width:810px;
+            height:600px;
+            background: #1abc9c;
+        }
+        #header {
+            width:800px;
+            height: 50px;
+            padding: 5px;
+            background: #1abc9c;
+        }
+        #sidebar {
+            height:400px;
+            width:170px;
+            background: #1abc9c;
+            float:left;
+            font-family:'Raleway';
+            font-size: 11px;
+            padding: 5px;
+        }
+        #content {
+            background-color:#ffffff;
+            height:400px;
+            width:450px;
+            float:left;
+        }
+        #footer {
+            width:630px;
+            height: 50px;
+            font-family:'Raleway';
+            font-size: 11px;
+            background: #1abc9c;
+            float:left;
+            padding: 5px;
+            text-align: right;
+        }
+        circle {
+            stroke: #1abc9c;
+            stroke-width: 2;
+            fill: white;
+        }
+        .d3-tip {
+            font-family:'Raleway';
+            line-height: 1;
+            padding: 1px;
+            background: transparent;
+            color: #000;
+            border-radius: 2px;
+        }
+        .axis path, .axis line {
+            fill: none;
+            stroke: grey;
+            shape-rendering: crispEdges;
+        }
+        .axis text {
+            font-family:'Raleway';
+            font-size: 11px;
+        }
+        select, button {
+            margin: 5px;
+            font-family:'Raleway' font-size: 20px;
+        }
+
+		</style>
+
+	</head><body>
+
+    <div id="container">
+        <div id="header">
+             <h1>Demo Scatterplot</h1>
+
+        </div>
+        <div id="sidebar">X-axis:
+            <select id="xAxisVar" onchange="reDraw()">
+                <option></option>
+                <option value="physicalstrength" selected="selected">physical strength</option>
+                <option value="fearfactor">fear factor</option>
+                <option value="killingpower">killing power</option>
+                <option value="horrorrating">horror rating</option>
+            </select>
+        </div>
+        <div id="content">
+            <svg height="400" width="650"><circle cx="390" cy="251" r="10" style="stroke: rgb(26, 188, 156);"></circle><circle cx="84" cy="285" r="10" style="stroke: rgb(128, 128, 128);"></circle><circle cx="156" cy="166" r="10" style="stroke: rgb(26, 188, 156);"></circle><circle cx="192" cy="336" r="10" style="stroke: rgb(26, 188, 156);"></circle><circle cx="102" cy="81" r="10" style="stroke: rgb(128, 128, 128);"></circle><circle cx="66" cy="302" r="10" style="stroke: rgb(128, 128, 128);"></circle><circle cx="84" cy="234" r="10" style="stroke: rgb(26, 188, 156);"></circle><circle cx="372" cy="302" r="10" style="stroke: rgb(26, 188, 156);"></circle><g class="axis" transform="translate(0,370)"><g class="tick" transform="translate(30,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">0</text></g><g class="tick" transform="translate(66,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">2</text></g><g class="tick" transform="translate(102,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">4</text></g><g class="tick" transform="translate(138,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">6</text></g><g class="tick" transform="translate(174,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">8</text></g><g class="tick" transform="translate(210,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">10</text></g><g class="tick" transform="translate(246,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">12</text></g><g class="tick" transform="translate(282,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">14</text></g><g class="tick" transform="translate(318,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">16</text></g><g class="tick" transform="translate(354,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">18</text></g><g class="tick" transform="translate(390,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">20</text></g><path class="domain" d="M30,6V0H390V6"></path></g><g class="axis" transform="translate(30,0)"><g class="tick" transform="translate(0,370)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">0</text></g><g class="tick" transform="translate(0,336)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">2</text></g><g class="tick" transform="translate(0,302)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">4</text></g><g class="tick" transform="translate(0,268)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">6</text></g><g class="tick" transform="translate(0,234)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">8</text></g><g class="tick" transform="translate(0,200)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">10</text></g><g class="tick" transform="translate(0,166)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">12</text></g><g class="tick" transform="translate(0,132)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">14</text></g><g class="tick" transform="translate(0,97.99999999999999)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">16</text></g><g class="tick" transform="translate(0,63.99999999999999)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">18</text></g><g class="tick" transform="translate(0,30)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">20</text></g><path class="domain" d="M-6,30H0V370H-6"></path></g></svg>
+        </div>
+        <div id="footer">Y-axis:
+            <select id="yAxisVar" onchange="reDraw()">
+                <option></option>
+                <option value="physicalstrength">physical strength</option>
+                <option value="fearfactor" selected="selected">fear factor</option>
+                <option value="killingpower">killing power</option>
+                <option value="horrorrating">horror rating</option>
+            </select>
+        </div>
+    </div>
+     
+
+		<script>
+
+        		//Set up the data
+        horror = [{
+            "name": "ape man",
+                "physicalstrength": 20,
+                "fearfactor": 7,
+                "killingpower": 12,
+                "horrorrating": 4,
+                "cluster": 1
+
+        }, {
+            "name": "godzilla",
+                "physicalstrength": 3,
+                "fearfactor": 5,
+                "killingpower": 4,
+                "horrorrating": 8,
+                "cluster": 2
+
+        }, {
+            "name": "the ghoul",
+                "physicalstrength": 7,
+                "fearfactor": 12,
+                "killingpower": 2,
+                "horrorrating": 7,
+                "cluster": 1
+
+        }, {
+            "name": "the freak",
+                "physicalstrength": 9,
+                "fearfactor": 2,
+                "killingpower": 1,
+                "horrorrating": 17,
+                "cluster": 1
+
+        }, {
+            "name": "dracula",
+                "physicalstrength": 4,
+                "fearfactor": 17,
+                "killingpower": 5,
+                "horrorrating": 16,
+                "cluster": 2
+
+        }, {
+            "name": "the hangman",
+                "physicalstrength": 2,
+                "fearfactor": 4,
+                "killingpower": 13,
+                "horrorrating": 8,
+                "cluster": 2
+
+        }, {
+            "name": "incredible melting man",
+                "physicalstrength": 3,
+                "fearfactor": 8,
+                "killingpower": 15,
+                "horrorrating": 6,
+                "cluster": 1
+
+        }, {
+            "name": "the thing",
+                "physicalstrength": 19,
+                "fearfactor": 4,
+                "killingpower": 11,
+                "horrorrating": 7,
+                "cluster": 1
+
+        }];
+
+        //Set constants
+
+        var w = 420,
+            h = 400,
+            padding = 30;
+
+        //Create adaptable scales
+
+        var xScale = d3.scale.linear()
+            .domain([0, d3.max(horror, function (d) {
+            return d3.max([d.physicalstrength, d.fearfactor, d.killingpower, d.horrorrating]);
+        })])
+            .range([padding, w - padding]);
+
+        var yScale = d3.scale.linear()
+            .domain([0, d3.max(horror, function (d) {
+            return d3.max([d.physicalstrength, d.fearfactor, d.killingpower, d.horrorrating]);
+        })])
+            .range([h - padding, padding]);
+
+        //Select the svg
+        var svg = d3.select("svg");
+
+        //Define and set up the tooltip
+        var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html(function (d) {
+            return d.name;
+        });
+
+        svg.call(tip);
+
+        //Set up the circles
+        diag_circles = svg.selectAll("circle");
+
+        diag_circles.data(horror)
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) {
+            return xScale(d.physicalstrength)
+        })
+            .attr("cy", function (d) {
+            return yScale(d.fearfactor)
+        })
+            .attr("r", 10)
+            .style("stroke", function (d) {
+            if (d.cluster === 1) {
+                return "#1abc9c";
+            } else {
+                return "gray";
+            }
+        })
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide);
+
+        //Set up the axes
+
+        var xAxis = d3.svg.axis()
+            .scale(xScale)
+            .orient("bottom");
+
+        var yAxis = d3.svg.axis()
+            .scale(yScale)
+            .orient("left");
+
+        svg.append("g")
+            .attr("class", "axis")
+            .attr("transform", "translate(0," + (h - padding) + ")")
+            .call(xAxis);
+
+        svg.append("g")
+            .attr("class", "axis")
+            .attr("transform", "translate(" + padding + ",0)")
+            .call(yAxis);
+
+        function reDraw() {
+            console.log('hi');
+            xVar = document.getElementById('xAxisVar').value;
+            yVar = document.getElementById('yAxisVar').value;
+
+            d3.selectAll("circle")
+                .transition()
+                .duration(1000)
+                .attr("cx", function (d) {
+                return eval("xScale(d." + xVar + ");");
+            })
+                .attr("cy", function (d) {
+                return eval("yScale(d." + yVar + ");");
+            });
+
+        }
+
+		</script><div class="d3-tip" style="position: absolute; opacity: 0;"></div>
+
+	
+
+
+</body></html>
